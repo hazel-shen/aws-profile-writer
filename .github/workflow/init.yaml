@@ -1,0 +1,19 @@
+name: "example workflow"
+on: [push]
+jobs:
+  my-example-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: get memory info
+        id: mem-info
+        uses: ./
+        with:
+          myInput: "Colin But"
+
+      - name: display memory info
+        run: |
+          echo ${{ steps.mem-info.outputs.memory }}
+          echo "total memory successfully output"
